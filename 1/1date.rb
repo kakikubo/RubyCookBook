@@ -1,4 +1,6 @@
+$KCODE = 'utf8'
 require 'date'
+
 # class Date
 #   def Date.now
 #     return Date.jd(DateTime.now.jd)
@@ -15,12 +17,12 @@ require 'date'
 
 # 代わりのお題
 #
-# イタリア(グレゴリオ歴)では1582年10月4日の翌日が10月15日
+p 'イタリア(グレゴリオ歴)では1582年10月4日の翌日が10月15日'
 p Date.new(1582, 10, 4).to_s
 #p Date.new(1582, 10, 5).to_s # ArgumentError
 p Date.new(1582, 10, 4).succ.to_s
 
-# イギリスでは 1752年9月2日の翌日が1752年9月14日
+p 'イギリスでは 1752年9月2日の翌日が1752年9月14日'
 p Date.new(1752, 9, 2, Date::ENGLAND).to_s
 # p Date.new(1752, 9, 3, Date::ENGLAND).to_s # ArgumentError
 p Date.new(1752, 9, 2, Date::ENGLAND).succ.to_s
