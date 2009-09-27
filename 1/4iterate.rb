@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'date'
 (Date.new(1776, 7, 2)..Date.new(1776, 7, 4)).each { |x| puts x }
 
