@@ -1,4 +1,4 @@
-# まってました。timeout処理。
+# まってました。timeout処理。 
 require 'timeout'
 before = Time.now
 begin
