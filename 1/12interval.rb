@@ -1,6 +1,8 @@
 $KCODE = 'utf'
 require 'date'
 # コードブロックの定期実行
+# ※結局、末尾のコードはうまくいっていない  FIXME
+
 
 # コードブロックの実行時間も考慮している
 def every_n_seconds(n)
