@@ -33,3 +33,13 @@ alarm = Thread.new(self) { sleep(5); Thread.main.wakeup }
 puts "Goodbye, cruel world!";
 Thread.stop;
 puts "I'm back; how'd that happen?"
+# >> 3...
+# >> 2...
+# >> 1...
+# >> Go!
+# >> 952107
+# >> 52413
+# >> Going to sleep for 100 seconds at Wed Oct 28 21:41:06 +0900 2009...
+# >> Woke up at Wed Oct 28 21:41:11 +0900 2009!
+# >> Goodbye, cruel world!
+# >> I'm back; how'd that happen?
