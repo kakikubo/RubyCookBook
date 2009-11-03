@@ -11,6 +11,7 @@ module EventDispatcher
   def notify(event, *args)
     if @event_dispatcher_listeners[event]
       @event_dispatcher_listeners[event].each do |m|
+        # yield(m.call(*args)) if m.respond_to? :call <- p.69に記載しているこっちだとエラーになってしまう。
         m.call(*args) if m.respond_to? :call
       end
     end
@@ -41,13 +42,46 @@ class WidgetCounter
   end
 end
 
+class Portal
+  include EventDispatcher
+
+  def initialize
+    setup_listeners
+  end
+
+  def render
+    puts '<table>'
+    render_block = Proc.new { |box| puts " <td>#{box}</td>"}
+    [:row1, :row2].each do |row|
+      puts ' <tr>'
+      notify(row, &render_block)
+      puts ' </tr>'
+    end
+    puts '</table>'
+  end
+end
+# TODO この構造は今ひとつまだ理解できていない
 f1 = Factory.new
 WidgetCounter.new(f1)
 f1.produce_widget("red")
 f1.produce_widget("green")
 f1.produce_widget("red")
 Factory.new.produce_widget("blue")
-# TODO!!! ここはもう一度明日やる事にしよう！！！
+
+# TODO こっちはうまくいってない↓
+portal = Portal.new
+portal.subscribe(:row1){ 'Stock Ticker'}
+portal.subscribe(:row1){ 'Weather'}
+portal.subscribe(:row2){ 'Pointless, Trivial News'}
+portal.render
+
+
 # >> 1 red widget(s) created since I started watching.
 # >> 1 green widget(s) created since I started watching.
 # >> 2 red widget(s) created since I started watching.
+# >> <table>
+# >>  <tr>
+# >>  </tr>
+# >>  <tr>
+# >>  </tr>
+# >> </table>

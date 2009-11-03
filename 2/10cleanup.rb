@@ -27,9 +27,6 @@ open('output.txt', 'w') do |out|
   out.puts 'Sorry, the filesystem is also closed'
 end
 
-# ~> -:27: undefined local variable or method `out' for main:Object (NameError)
-# ~> 	from -:26:in `open'
-# ~> 	from -:26
 # >> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 # >>     "http://www.w3.org/TR/html4/loose.dtd">
 # >> <html>
